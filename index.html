@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function() {
        <a href="#" class="why">Why Anoora?
         
        </a>
-        </span>
+      </span>
 
 
         <div class="sub2">
-          <h1 class="anoora">ANOORA <span><div class="in"></div></span></h1>
+          <h1 class="anoora">ANOORA <span ><div class="in"></div></span></h1>
           <div class="sub">
           <div class="img1">
           <h3 >Indoor
@@ -101,70 +101,81 @@ document.addEventListener("DOMContentLoaded", function() {
      height:80px;border-bottom: 2px solid lightgrey;">Collection</h1>
 
      <div class="change-main">
-     <div class="swiper mySwiper change-con">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide card1">
-         <h1 class="h1-card">Home light</h1>
+     <div class=" change-con">
+       
+        <div class="card">
+        <img id="galleryImage" src="" alt="">
+         <h1 class="h1-card" id="galleryDescription"></h1>
+         <button id="prevButton" ><i class="fa-solid fa-chevron-left"></i></button>
+         <button id="nextButton" ><i class="fa-solid fa-angle-right"></i></button>
          <h5 class="h5-card">In the home of light, where shadows dare not roam,<br>
           Dreams are born in brilliance, and hearts find their true home.
         <br>
         <br>
           <a href="#" class="a-card">Whole home Guide</a></h5>
         </div>
-
-        <div class="swiper-slide card2 ">
-          
-          <h1 class="h1-card">Indoor light</h1>
-          <h5 class="h5-card">In the home of light, where shadows dare not roam,<br>
-           Dreams are born in brilliance, and hearts find their true home.
-         <br>
-         <br>
-           <a href="#" class="a-card">Whole Indoor Guide</a></h5>
-        </div>
-
-         <div class="swiper-slide card3 ">
-          
-          <h1 class="h1-card">Outdoor light</h1>
-          <h5 class="h5-card">In the home of light, where shadows dare not roam,<br>
-           Dreams are born in brilliance, and hearts find their true home.
-         <br>
-         <br>
-           <a href="#" class="a-card">Whole Out Guide</a></h5>
-        </div>
-
-         <div class="swiper-slide card4">
-           
-          <h1 class="h1-card">water light</h1>
-          <h5 class="h5-card">In the home of light, where shadows dare not roam,<br>
-           Dreams are born in brilliance, and hearts find their true home.
-         <br>
-         <br>
-           <a href="#" class="a-card">Whole Water Guide</a></h5>
-        </div>
     
-      </div>
-      <div class="swiper-pagination" style="color: white;"></div>
-      <!-- Add Arrows -->
-      <div class="swiper-button-next" style="color: white;font-size:2rem;font-weight: bolder;"></div>
-      <div class="swiper-button-prev" style="color: white;font-size: 2rem;font-weight: bolder;"></div>
      </div><!--change-con ends-->
     </div><!--change-main ends-->
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const arr = [
+          {
+            url: "mianimg.png",
+            des: 'Home lights'
 
-  <!-- Initialize Swiper -->
-  <script>
-    var swiper = new Swiper(".mySwiper", {
-      pagination: {
-        el: ".swiper-pagination",
-        type: "fraction",
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
-  </script>
+          },
+          {
+            url: "indoor.png",
+            des: 'Indoor lights'
+          },
+          {
+            url: "outdoor.png",
+            des: 'Outdoor lights'
+          },
+          {
+            url: "water.png",
+            des: 'Water lights'
+          }
+        ];
+  
+        let currentIndex = 0;
+  
+        const galleryImage = document.getElementById('galleryImage');
+        const galleryDescription = document.getElementById('galleryDescription');
+  
+        function display(index){
+          galleryImage.src=arr[index].url;
+          galleryDescription.textContent=arr[index].des;
+  
+        }
+        function showNextImage() {
+          currentIndex = (currentIndex + 1) % arr.length;
+          display(currentIndex);
+        }
+        document.getElementById('prevButton').addEventListener('click',function(){
+          if(currentIndex >0){
+            currentIndex--;
+            display(currentIndex);
+          }
+        })
+  
+        document.getElementById('nextButton').addEventListener('click',function(){
+          if(currentIndex<arr.length-1 ){
+            currentIndex++;
+            display(currentIndex);
+          }
+        })
+  
+       
+        display(currentIndex);
+        setInterval(showNextImage, 5000);
+        
+  
+      });
+    </script>
+<!--change con script ends-->
 
      <div class="box-con">
       <div class="box1">
